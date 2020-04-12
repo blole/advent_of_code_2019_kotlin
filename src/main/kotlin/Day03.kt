@@ -21,11 +21,6 @@ class Day03(io: Kattio) {
     val pointsA = wires[0].toPoints()
     val pointsB = wires[1].toPoints()
 
-    fun a(): Int {
-        return pointsA.keys.intersect(pointsB.keys).map { it.manhattan }.min()!!
-    }
-
-    fun b(): Int {
-        return pointsA.keys.intersect(pointsB.keys).map { pointsA[it]!!+pointsB[it]!! }.min()!!
-    }
+    fun a(): Int = pointsA.keys.intersect(pointsB.keys).map { it.manhattan }.min()!!
+    fun b(): Int = pointsA.keys.intersect(pointsB.keys).map { pointsA[it]!!+pointsB[it]!! }.min()!!
 }
