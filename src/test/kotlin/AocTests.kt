@@ -45,4 +45,24 @@ class AocTests {
         val io = Kattio(File("src/test/resources/in/02.txt").inputStream())
         assertEquals(7749, Day02(io).b())
     }
+
+    @Test
+    fun `test day03a`() {
+        assertEquals(6, Day03(Kattio(ByteArrayInputStream("R8,U5,L5,D3\nU7,R6,D4,L4".toByteArray()))).a())
+        assertEquals(159, Day03(Kattio(ByteArrayInputStream("R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83".toByteArray()))).a())
+        assertEquals(135, Day03(Kattio(ByteArrayInputStream("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7".toByteArray()))).a())
+
+        val io = Kattio(File("src/test/resources/in/03.txt").inputStream())
+        assertEquals(5319, Day03(io).a())
+    }
+
+    @Test
+    fun `test day03b`() {
+        assertEquals(30, Day03(Kattio(ByteArrayInputStream("R8,U5,L5,D3\nU7,R6,D4,L4".toByteArray()))).b())
+        assertEquals(610, Day03(Kattio(ByteArrayInputStream("R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83".toByteArray()))).b())
+        assertEquals(410, Day03(Kattio(ByteArrayInputStream("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7".toByteArray()))).b())
+
+        val io = Kattio(File("src/test/resources/in/03.txt").inputStream())
+        assertEquals(122514, Day03(io).b())
+    }
 }
