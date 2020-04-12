@@ -1,27 +1,28 @@
+import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
 import java.io.*
 
 class AocTests {
-    @Test
-    fun `test day01a`() {
-        assertEquals(2,     Day01(Kattio(ByteArrayInputStream("12".toByteArray()))).a())
-        assertEquals(2,     Day01(Kattio(ByteArrayInputStream("14".toByteArray()))).a())
-        assertEquals(654,   Day01(Kattio(ByteArrayInputStream("1969".toByteArray()))).a())
-        assertEquals(33583, Day01(Kattio(ByteArrayInputStream("100756".toByteArray()))).a())
-
-        val io = Kattio(File("src/test/resources/in/01.txt").inputStream())
-        assertEquals(3320226, Day01(io).a())
+    fun String.toKattio() = Kattio(ByteArrayInputStream(toByteArray()))
+    inline fun <reified T: AocClass> create(io: Kattio): T = T::class.constructors.first().call(io)
+    inline fun <reified T: AocClass> create(input: String): T = create<T>(input.toKattio())
+    inline fun <reified T: AocClass> create(): T {
+        val file = File("src/test/resources/in/${T::class.simpleName?.drop(3)}.txt")
+        return create(Kattio(file.inputStream()))
     }
 
     @Test
-    fun `test day01b`() {
-        assertEquals(2,     Day01(Kattio(ByteArrayInputStream("14".toByteArray()))).b())
-        assertEquals(966,   Day01(Kattio(ByteArrayInputStream("1969".toByteArray()))).b())
-        assertEquals(50346, Day01(Kattio(ByteArrayInputStream("100756".toByteArray()))).b())
+    fun `day01`() {
+        assertEquals(2,       create<Day01>("12").a())
+        assertEquals(2,       create<Day01>("14").a())
+        assertEquals(654,     create<Day01>("1969").a())
+        assertEquals(33583,   create<Day01>("100756").a())
+        assertEquals(3320226, create<Day01>().a())
 
-        val io = Kattio(File("src/test/resources/in/01.txt").inputStream())
-        assertEquals(4977473, Day01(io).b())
+        assertEquals(2,       create<Day01>("14").b())
+        assertEquals(966,     create<Day01>("1969").b())
+        assertEquals(50346,   create<Day01>("100756").b())
+        assertEquals(4977473, create<Day01>().b())
     }
 
     @Test
