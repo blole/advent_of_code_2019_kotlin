@@ -14,18 +14,18 @@ fun List<Wire>.toPoints(): HashMap<Pos, Int> {
     return hashMap
 }
 
-class Day03(io: Kattio): AocClass {
+class Day03(io: Kattio) {
     val wires = io.words().map { wire ->
         wire.split(',').map { Wire(Dir.valueOf(it.take(1)), it.drop(1).toInt()) }
     }.toList()
     val pointsA = wires[0].toPoints()
     val pointsB = wires[1].toPoints()
 
-    override fun a(): Int {
+    fun a(): Int {
         return pointsA.keys.intersect(pointsB.keys).map { it.manhattan }.min()!!
     }
 
-    override fun b(): Int {
+    fun b(): Int {
         return pointsA.keys.intersect(pointsB.keys).map { pointsA[it]!!+pointsB[it]!! }.min()!!
     }
 }
