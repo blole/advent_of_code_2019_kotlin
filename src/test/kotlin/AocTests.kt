@@ -38,6 +38,12 @@ class AocTests {
     }
 
     @Test
+    fun day04() {
+        assertEquals(1625, Day04(file(4)).a())
+        assertEquals(1111, Day04(file(4)).b())
+    }
+
+    @Test
     fun intcodeComputer() {
         assertEquals(70,   IntcodeComputer("1,9,10,3,2,3,11,0,99,30,40,50").step().ram[3])
         assertEquals(3500, IntcodeComputer("1,9,10,3,2,3,11,0,99,30,40,50").run().ram[0])
