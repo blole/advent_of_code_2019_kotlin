@@ -44,6 +44,11 @@ class AocTests {
     }
 
     @Test
+    fun day05() {
+        assertEquals(9431221, Day05(file(5)).a())
+    }
+
+    @Test
     fun intcodeComputer() {
         assertEquals(70,   IntcodeComputer("1,9,10,3,2,3,11,0,99,30,40,50").step().ram[3])
         assertEquals(3500, IntcodeComputer("1,9,10,3,2,3,11,0,99,30,40,50").run().ram[0])
@@ -51,5 +56,15 @@ class AocTests {
         assertEquals(6,    IntcodeComputer("2,3,0,3,99").run().ram[3])
         assertEquals(9801, IntcodeComputer("2,4,4,5,99,0").run().ram[5])
         assertEquals(30,   IntcodeComputer("1,1,1,4,99,5,6,0,99").run().ram[0])
+    }
+
+    @Test
+    fun intcodeComputerDay5() {
+        assertEquals(55, IntcodeComputer("3,1", string("55")).step().ram[1])
+        //assertEquals(55, IntcodeComputer("103,1", string("55")).step().ram[1])
+        assertEquals(99, IntcodeComputer("1101,100,-1,4,0").step().ram[4])
+        assertEquals(99, IntcodeComputer("1002,4,3,4,33").step().ram[4])
+        assertEquals(1101, IntcodeComputer("3,0,1,0,6,6,1100", string("1")).step().step().ram[6])
+        assertEquals(1, IntcodeComputer("3,0,4,0,99", string("1")).step().step().ram[0])
     }
 }
