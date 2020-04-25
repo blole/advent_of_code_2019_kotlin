@@ -2,6 +2,7 @@ import kotlin.math.abs
 
 data class Pos(val x: Int, val y: Int) {
     operator fun plus(o: Pos) = Pos(x+o.x, y+o.y)
+    operator fun minus(o: Pos) = Pos(x-o.x, y-o.y)
     operator fun plus(o: Dir) = this+o.pos
     val manhattan get() = abs(x) + abs(y)
 }
